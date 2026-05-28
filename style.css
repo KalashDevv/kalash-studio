@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* DARK MODE VARIABLE SYSTEM */
+body {
+    background-color: white;
+    color: #111827;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* When JS injects the .dark-theme class, these rules override the page */
+body.dark-theme {
+    background-color: #111827;
+    color: #f9fafb;
+}
+body.dark-theme .services,
+body.dark-theme .portfolio {
+    background-color: #1f2937;
+}
+body.dark-theme .portfolio h2,
+body.dark-theme .services h2,
+body.dark-theme .portfolio p {
+    color: white !important;
+}
+body.dark-theme .card,
+body.dark-theme .portfolio-item {
+    background-color: #111827;
+    border-color: #374151;
+}
+body.dark-theme .card p,
+body.dark-theme .portfolio-info p {
+    color: #d1d5db;
+}
+
+/* NAVIGATION */
+nav {
+    background-color: #70c797;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #111;
+    transition: 0.3s;
+}
+
+.btn-toggle {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+.hero {
+    background-color: darkcyan;
+    text-align: center;
+    padding: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.hero h1 {
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-solid {
+    background-color: #70c797;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #70c797;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #70c797;
+    border-radius: 5px;
+}
+
+/* SERVICES SECTION */
+.services {
+    background: white;
+    padding: 90px 20px;
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.services-container {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.card {
+    background-color: white;
+    padding: 35px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #2563eb;
+    font-size: 24px;
+}
+
+.card p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* PORTFOLIO SECTION CSS */
+.portfolio {
+    background-color: #f9fafb;
+    padding: 90px 20px;
+}
+
+.portfolio h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+.portfolio-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    width: 350px;
+    transition: 0.3s;
+    border: 1px solid #e5e7eb;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-info {
+    padding: 30px;
+}
+
+.project-tag {
+    background-color: #e8f7f0;
+    color: #70c797;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.portfolio-info h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.portfolio-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btn-view {
+    color: #70c797;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* CONTACT SECTION CSS */
+.contact {
+    background-color: #111827;
+    padding: 90px 20px;
+    color: white;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #1f2937;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #70c797;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+footer {
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #1f2937;
+}
+
+/* MOBILE RESPONSIVE RULES */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        gap: 15px; 
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .portfolio-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .portfolio-item {
+        width: 100%;
+        max-width: 350px;
+    }
+}
