@@ -85,3 +85,55 @@ contactForm.addEventListener('submit', function(event) {
         });
     }
 });
+// ==========================================
+// FEATURE 3: DYNAMIC PORTFOLIO DATABASE ENGINE
+// ==========================================
+
+// 1. Your Project Database (Array of Objects)
+const studioProjects = [
+    {
+        title: "Responsive Business Card",
+        tag: "Frontend Design",
+        description: "An interactive, highly optimized digital branding card built with modern CSS linear gradients and fluid layouts.",
+        liveLink: "https://kalashdevv.github.io/kalash-business-card/"
+    },
+    {
+        title: "E-Commerce Core Layout",
+        tag: "Full-Stack Development",
+        description: "An upcoming premium storefront layout engineered with dynamic user interface elements and robust features.",
+        liveLink: "#"
+    },
+    {
+        title: "Creative Branding Portal",
+        tag: "UI/UX Design",
+        description: "A gorgeous, dark-themed mockup design mapping customized user landing journeys and design tokens.",
+        liveLink: "#"
+    }
+];
+
+// 2. Select the empty HTML grid wrapper we created in Step 1
+const dynamicGrid = document.getElementById('dynamic-portfolio-grid');
+
+// 3. Define the engine function that builds the cards on the screen
+function renderProjects() {
+    // Clear out anything inside the grid just in case
+    dynamicGrid.innerHTML = "";
+
+    // Loop through each individual project object inside our array list
+    studioProjects.forEach(function(project) {
+        // Append a structured template filled with the object's specific data
+        dynamicGrid.innerHTML += `
+            <div class="portfolio-item">
+                <div class="portfolio-info">
+                    <span class="project-tag">${project.tag}</span>
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <a href="${project.liveLink}" target="_blank" class="btn-view">View Live Project &rarr;</a>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// 4. Run the engine immediately when the page loads!
+renderProjects();
