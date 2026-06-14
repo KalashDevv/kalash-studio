@@ -1,0 +1,68 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body Layout & Vibrant Blue Gradient Background */
+body {
+    background: linear-gradient(135deg, #2d89ff 0%, #0d47a1 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main Dashboard Card Wrapper */
+.dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff; /* Brilliant Clean White */
+    color: #1e293b; /* Premium Dark Slate Text */
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    padding: 35px 30px;
+}
+
+/* Header Typography Styling */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #0f172a;
+}
+
+/* Adaptive Three-Column Responsive Grid Canvas */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* Individual Data Card Compartments */
+.chart-item {
+    background-color: #f8fafc; /* Ultra-light cool gray background fill */
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    height: 340px; /* Locked height anchor for stable responsive chart drawing */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}

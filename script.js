@@ -1,139 +1,104 @@
-// ==========================================
-// FEATURE 1: DARK/LIGHT THEME TOGGLE
-// ==========================================
-const themeToggleBtn = document.getElementById('theme-toggle');
-
-themeToggleBtn.addEventListener('click', function() {
-    document.body.classList.toggle('dark-theme');
-
-    if (document.body.classList.contains('dark-theme')) {
-        themeToggleBtn.textContent = '☀️'; 
-    } else {
-        themeToggleBtn.textContent = '🌙'; 
-    }
-});
-
+// Global configuration override to use Poppins across all charts cleanly
+Chart.defaults.font.family = "'Poppins', sans-serif";
 
 // ==========================================
-// FEATURE 2: LIVE CONTACT FORM WITH BACKEND API
+// CHART 1: BAR CHART (Monthly Sales)
 // ==========================================
-const contactForm = document.querySelector('.contact form');
-const contactSection = document.querySelector('.contact');
-
-function showSuccessScreen(userName) {
-    contactSection.innerHTML = `
-        <div class="success-message" style="text-align: center; padding: 40px 20px; animation: fadeIn 0.5s ease-in-out;">
-            <div class="success-icon" style="font-size: 50px; margin-bottom: 20px;">✅</div>
-            <h2 style="margin-bottom: 15px; color: #70c797;">Message Sent Successfully!</h2>
-            <p style="color: #9ca3af; font-size: 18px; max-width: 400px; margin: 0 auto; line-height: 1.6;">
-                Thank you, <strong>${userName}</strong>. The team at KalashDevv Studio has received your message and will review it immediately.
-            </p>
-        </div>
-    `;
-}
-
-contactForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default page refresh
-
-    // 1. Grab input values
-    const nameInput = document.querySelector('input[placeholder="Your Name"]').value;
-    const emailInput = document.querySelector('input[type="email"]').value;
-    const messageInput = document.querySelector('textarea').value;
-    const submitBtn = document.querySelector('.btn-submit');
-
-    // 2. Frontend Validation Check
-    if (messageInput.length < 10) {
-        alert("❌ Error: Your message must be at least 10 characters long.");
-    } else {
-        // 3. Visual Feedback (Let the user know it's processing)
-        submitBtn.textContent = "Sending...";
-        submitBtn.style.opacity = "0.7";
-        submitBtn.style.pointerEvents = "none";
-
-        // 4. Package data for the Formspree API
-        const formData = {
-            name: nameInput,
-            email: emailInput,
-            message: messageInput
-        };
-
-        // 5. Fire data to your Formspree Endpoint
-        fetch("https://formspree.io/f/maqkvqve", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Monthly Sales ($)',
+            data: [1200, 1900, 1500, 2200, 1800, 2500],
+            backgroundColor: '#2d89ff', /* Electric Blue matching your gradient themes */
+            borderRadius: 6
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: '#334155', font: { weight: '600' } } }
+        },
+        scales: {
+            y: { 
+                ticks: { color: '#64748b' }, 
+                grid: { color: '#e2e8f0' } /* Soft light gridline divider lines */
             },
-            body: JSON.stringify(formData)
-        })
-        .then(response => {
-            if (response.ok) {
-                // If backend accepts the letter, transform the UI!
-                showSuccessScreen(nameInput);
-            } else {
-                alert("❌ Oops! There was a problem submitting your form.");
-                submitBtn.textContent = "Send Message";
-                submitBtn.style.opacity = "1";
-                submitBtn.style.pointerEvents = "auto";
+            x: { 
+                ticks: { color: '#64748b' }, 
+                grid: { display: false } 
             }
-        })
-        .catch(error => {
-            alert("❌ Network error. Please check your internet connection.");
-            submitBtn.textContent = "Send Message";
-            submitBtn.style.opacity = "1";
-            submitBtn.style.pointerEvents = "auto";
-        });
+        }
     }
 });
-// ==========================================
-// FEATURE 3: DYNAMIC PORTFOLIO DATABASE ENGINE
-// ==========================================
 
-// 1. Your Project Database (Array of Objects)
-const studioProjects = [
-    {
-        title: "Responsive Business Card",
-        tag: "Frontend Design",
-        description: "An interactive, highly optimized digital branding card built with modern CSS linear gradients and fluid layouts.",
-        liveLink: "https://kalashdevv.github.io/kalash-business-card/"
+// ==========================================
+// CHART 2: LINE CHART (Website Traffic)
+// ==========================================
+const lineCtx = document.getElementById('lineChart').getContext('2d');
+new Chart(lineCtx, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [{
+            label: 'Website Traffic',
+            data: [400, 450, 420, 600, 800],
+            borderColor: '#10b981', /* High-vibrancy Green */
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4
+        }]
     },
-    {
-        title: "E-Commerce Core Layout",
-        tag: "Full-Stack Development",
-        description: "An upcoming premium storefront layout engineered with dynamic user interface elements and robust features.",
-        liveLink: "#"
-    },
-    {
-        title: "Creative Branding Portal",
-        tag: "UI/UX Design",
-        description: "A gorgeous, dark-themed mockup design mapping customized user landing journeys and design tokens.",
-        liveLink: "#"
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: '#334155', font: { weight: '600' } } }
+        },
+        scales: {
+            y: { 
+                ticks: { color: '#64748b' }, 
+                grid: { color: '#e2e8f0' } 
+            },
+            x: { 
+                ticks: { color: '#64748b' }, 
+                grid: { display: false } 
+            }
+        }
     }
-];
+});
 
-// 2. Select the empty HTML grid wrapper we created in Step 1
-const dynamicGrid = document.getElementById('dynamic-portfolio-grid');
-
-// 3. Define the engine function that builds the cards on the screen
-function renderProjects() {
-    // Clear out anything inside the grid just in case
-    dynamicGrid.innerHTML = "";
-
-    // Loop through each individual project object inside our array list
-    studioProjects.forEach(function(project) {
-        // Append a structured template filled with the object's specific data
-        dynamicGrid.innerHTML += `
-            <div class="portfolio-item">
-                <div class="portfolio-info">
-                    <span class="project-tag">${project.tag}</span>
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <a href="${project.liveLink}" target="_blank" class="btn-view">View Live Project &rarr;</a>
-                </div>
-            </div>
-        `;
-    });
-}
-
-// 4. Run the engine immediately when the page loads!
-renderProjects();
+// ==========================================
+// CHART 3: DOUGHNUT CHART (Traffic Sources)
+// ==========================================
+const pieCtx = document.getElementById('pieChart').getContext('2d');
+new Chart(pieCtx, {
+    type: 'doughnut', 
+    data: {
+        labels: ['Desktop', 'Tablet', 'Mobile'],
+        datasets: [{
+            data: [55, 25, 20],
+            backgroundColor: [
+                '#2d89ff', /* Electric Blue */
+                '#8b5cf6', /* Modern Vivid Purple */
+                '#f43f5e'  /* Modern Rose/Coral */
+            ],
+            borderWidth: 4,
+            borderColor: '#f8fafc' /* Matches card background container for clear spacing segments */
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { 
+                position: 'bottom', 
+                labels: { color: '#334155', padding: 20, font: { weight: '600' } } 
+            }
+        }
+    }
+});
