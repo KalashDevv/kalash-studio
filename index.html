@@ -3,28 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Visualization Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <title>Kalash Studio | Premium Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="dashboard-container">
-    <header class="dashboard-header">
-        <h1>Data Visualization Dashboard</h1>
-    </header>
-    <div class="charts-container">
-        <div class="chart-item">
-            <canvas id="barChart"></canvas>
+
+    <nav class="navbar">
+        <div class="nav-logo">
+            <h2>Kalash<span>Studio</span></h2>
         </div>
-        <div class="chart-item">
-            <canvas id="lineChart"></canvas>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-item">Home</a></li>
+            <li><a href="#services" class="nav-item">Services</a></li>
+            <li><a href="#portfolio" class="nav-item">Portfolio</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="content-section hero-section">
+            <div class="hero-content">
+                <span class="hero-subtitle">Welcome to Kalash Studio</span>
+                <h1>Building Modern, High-Performance Web Experiences</h1>
+                <p>Eager to build, launch, and deploy real-world web projects with absolute attention to detail, precision engineering, and modern design principles.</p>
+                <div class="hero-cta">
+                    <a href="#portfolio" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-secondary">Let's Talk</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="content-section normal-section">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-code icon-box"></i>
+                    <h3>Full Stack Development</h3>
+                    <p>Clean semantic HTML structures, structured responsive layouts, and clean scripting solutions tailored for performance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-layer-group icon-box"></i>
+                    <h3>Creative Design</h3>
+                    <p>Crafting stunning, premium user interfaces with modern spacing, balanced layouts, and fluid responsiveness.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-mobile-screen icon-box"></i>
+                    <h3>Responsive Adaptation</h3>
+                    <p>Ensuring complex enterprise designs collapse flawlessly into intuitive, thumb-friendly configurations across all mobile viewports.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="content-section alt-section">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+            <a href="https://kalashdevv.github.io/Digital-Business-card/" target="_blank" rel="noopener noreferrer" class="project-link">
+    <div class="project-card">
+        <div class="project-img-placeholder">
+            <i class="fa-solid fa-address-card"></i>
         </div>
-        <div class="chart-item">
-            <canvas id="pieChart"></canvas>
+        <div class="project-info">
+            <h4>Digital Business Card</h4>
+            <p>An elegant interactive networking application loaded with quick social hooks.</p>
         </div>
     </div>
-</div>
-<script src="script.js"></script>
+</a>
+
+<a href="https://kalashdevv.github.io/Live-Data-Dashboard/" target="_blank" rel="noopener noreferrer" class="project-link">
+    <div class="project-card">
+        <div class="project-img-placeholder">
+            <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div class="project-info">
+            <h4>Live Data Dashboard</h4>
+            <p>An interactive data visualization dashboard displaying real-time analytics.</p>
+        </div>
+    </div>
+</a>
+        </section>
+
+        <section id="contact" class="content-section normal-section">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-desc">Have a project or platform layout idea you'd like to collaborate on? Let's talk business.</p>
+            
+            <div class="contact-container">
+                <form action="https://formspree.io/f/xykalonq" method="POST" class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="_replyto" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Tell me about your project needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+                </form>
+                <div id="formStatus" class="form-status-msg"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
